@@ -5,37 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                {{-- <div class="card-header">{{ __('Dashboard') }}</div> --}}
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div id="msg">
-                    <?php if(isset($_SESSION) && $_SESSION['msg'] != ''){ ?>
-                         <div class="alert alert-success">
-                             <strong>Success!</strong> Successfully posted!
-                         </div>
-                    <?php } unset($_SESSION['msg']); ?>
-                </div>
-
-              <div class="container">
-                <form action="/home" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Subject</label>
-                        <input type="text" name="subject" class="form-control" id="exampleFormControlInput1" placeholder="Your name">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                        <textarea class="form-control" name="feedback" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label">File</label>
-                        <input class="form-control" name="file" type="file" id="formFile">
-                    </div>
-
-                    <input type="submit" class="btn btn-primary mb-3">
-                </form>
-              </div>
+                
         </div>
     </div>
 </div>
