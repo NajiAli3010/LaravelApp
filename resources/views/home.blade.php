@@ -6,15 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 {{-- <div class="card-header">{{ __('Dashboard') }}</div> --}}
-
-                <div id="msg">
-                    <?php if(isset($_SESSION) && $_SESSION['msg'] != ''){ ?>
-                         <div class="alert alert-success">
-                             <strong>Success!</strong> Successfully posted!
-                         </div>
-                    <?php } unset($_SESSION['msg']); ?>
-                </div>
-
               <div class="container">
                 <form action="/home" method="post" enctype="multipart/form-data">
                     @csrf

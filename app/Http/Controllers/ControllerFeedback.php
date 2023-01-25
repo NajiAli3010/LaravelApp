@@ -14,8 +14,8 @@ class ControllerFeedback extends Controller
         $data = $request->validate([
 
 
-            'subject'=>['required', 'max:111'],
-            'feedback'=>['required',''],
+            'subject'=>['required', 'max:225'],
+            'feedback'=>['required'],
             'file' => ['required', 'mimes:jpg,bmp,png,pdf,doc,docx,','max:3072']
 
         ]);

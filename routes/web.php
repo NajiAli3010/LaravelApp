@@ -18,10 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin', function () {
+    return view('admin');
+});
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::post('/home', [App\Http\Controllers\ControllerFeedback::class, 'store']);
+Route::get('/admin', [App\Http\Controllers\adminController::class, 'feed']);
 
