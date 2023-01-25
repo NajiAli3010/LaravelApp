@@ -10,11 +10,10 @@ class ControllerFeedback extends Controller
 {
     public function store(Request $request)
     {
-        dd($request);
 
+        return $request->file('file')->store('docs');
 
         $feedback = new Feedbackform;
-        
         $feedback->Subject = $request['subject'];
         $feedback->Feedback = $request['feedback'];
         $feedback->File = $request['file'];

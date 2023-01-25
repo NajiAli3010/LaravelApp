@@ -19,7 +19,7 @@
             </div> --}}
 
               <div class="container">
-                <form action="/home" method="post">
+                <form action="/home" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Subject</label>
@@ -31,9 +31,9 @@
                         <textarea class="form-control" name="feedback" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
 
-                     <div class="mb-3">
-                        <input type="file" class="form-control" aria-label="file example" required>
-                        <div class="invalid-feedback">File feedback</div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" name="file" type="file" id="formFile">
                     </div>
 
                     <input type="submit" class="btn btn-primary mb-3">

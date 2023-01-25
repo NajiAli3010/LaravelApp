@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControllerFeedback;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +23,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'store']);
+Route::post('/home', [App\Http\Controllers\ControllerFeedback::class, 'store']);
