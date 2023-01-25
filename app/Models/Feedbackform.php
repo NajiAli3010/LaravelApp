@@ -10,5 +10,7 @@ class Feedbackform extends Model
     use HasFactory;
 
     protected $table = 'feedbackforms';
-    protected $primaryKey = 'ID';
+    // 
+
+    protected $fillable = ['user_id','Subject','Feedback','File'];
 }

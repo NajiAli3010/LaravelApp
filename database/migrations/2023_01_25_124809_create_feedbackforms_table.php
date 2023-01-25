@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('feedbackforms', function (Blueprint $table) {
-            $table->id('ID');
+            $table->id();
+            $table->integer('user_id');
             $table->string('Subject');
             $table->text('Feedback');
             $table->string('File');
