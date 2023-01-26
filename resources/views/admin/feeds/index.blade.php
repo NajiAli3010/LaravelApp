@@ -737,43 +737,18 @@
                                 <p>{{ $feed->Feedback }} </p>
                             </div>
                         </div>
+
                 </article>
 
             @endforeach
+            <nav aria-label="Page navigation example">
 
 
+            </nav>
 
 
-            {{--            {{$feeds->links()}}--}}
             <div class="clearfix"></div>
+            {{$feeds->links()}}
         </div>
     </div>
-
-
-
-
-
-
-
-    {{-- <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Feedbacks') }}</div>
-                <ul>
-                            @foreach ($feeds as $feed)
-
-                                <li>ID: {{ $feed->id }}</li>
-                                <li>Creation Time: {{ $feed->created_at }}</li>
-                                <li>Time sent: {{ $feed->updated_at }}</li>
-                                <li>UserName: {{ $feed->user->name }}</li>
-                                <li>Email: {{ $feed->user->email }}</li>
-                                <li>Subject: {{ $feed->Subject }}</li>
-                                <li>Feedback: {{ $feed->Feedback }}</li>
-
-                            @endforeach
-                            </ul>
-            </div>
-        </div>
-    </div> --}}
 @endsection

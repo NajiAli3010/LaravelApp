@@ -28,6 +28,6 @@ class ControllerFeedback extends Controller
         $feedback->user_id = auth()->user()->id;
         $feedback->save();
 
-        return back();
+        return redirect('/success');
     }
 }
