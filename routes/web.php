@@ -22,6 +22,12 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/admin', function () {
+      return view('admin');
+    })->name('dashboard');
+  });
+
 
 Auth::routes();
 
