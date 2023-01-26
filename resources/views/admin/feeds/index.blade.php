@@ -724,7 +724,7 @@
                                     <li>
                                         <div class="info">
                                             <p>File:</p>
-                                            <strong>{{ $feed->File }}</strong>
+                                            <a href={{ $feed->File }}>link File</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -744,7 +744,7 @@
 
 
 
-{{--            {{$feeds->links()}}--}}
+            {{--            {{$feeds->links()}}--}}
             <div class="clearfix"></div>
         </div>
     </div>

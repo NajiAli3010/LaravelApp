@@ -8,12 +8,12 @@ use DB;
 
 class adminController extends Controller
 {
-    public function feed()
-    {
-
-        $feeds = Feedbackform::paginate(5)->sortByDesc('id');
-        return view('admin', compact('feeds'));
-    }
+//    public function feed()
+//    {
+//
+//        $feeds = Feedbackform::All()->sortByDesc('id');
+//        return view('admin', compact('feeds'));
+//    }
 
 
 }

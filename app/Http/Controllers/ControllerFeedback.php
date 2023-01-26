@@ -13,14 +13,13 @@ class ControllerFeedback extends Controller
 
         $data = $request->validate([
 
-
-            'subject'=>['required', 'max:225'],
-            'feedback'=>['required'],
-            'file' => ['required', 'mimes:jpg,bmp,png,pdf,doc,docx,','max:3072']
+            'subject' => ['required', 'max:225'],
+            'feedback' => ['required'],
+            'file' => ['required', 'mimes:jpg,bmp,png,pdf,doc,docx,', 'max:3072']
 
         ]);
 
-        $path =  $request->file('file')->store('docs','public');
+        $path = $request->file('file')->store('docs', 'public');
 
         $feedback = new Feedbackform;
         $feedback->Subject = $request['subject'];
