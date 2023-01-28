@@ -1,12 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container mt-5">
 
     @if (session()->has('message'))
                     <p class="alert {{ session()->get('alert-class') }}">{{ session()->get('message') }}</p>
                 @endif
                 
+                {{-- Feedback Form --}}
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1 class="align-items-lg-center">Create Feedback </h1>

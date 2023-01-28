@@ -8,10 +8,15 @@
     <br>
     <p>{{ $mailData['body'] }}</p>
     <br>
-    <p>Thank you</p>
-
-    {{$mailData['data']}}
     
+
+    {{-- 'title' => $title,
+            'body' => $body,
+            'subject' => $subject,
+            'feedback' => $feedback,
+            'file' => $file,
+            'created_at' => $created_at, --}}
+            
     <table class="table">
         <thead>
           <tr>
@@ -19,16 +24,18 @@
             <th scope="col">Feedback</th>
             <th scope="col">File</th>
             <th scope="col">Create Time</th>
-            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>{{$mailData['subject']}}</td>
+            <td>{{$mailData['feedback']}}</td>
+            <td>{{$mailData['file']}}</td>
+            <td>{{$mailData['created_at']}}</td>
           </tr>
         </tbody>
       </table>
+      <br>
+      <p>Thank you,</p>
 </body>
 </html>

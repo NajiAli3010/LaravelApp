@@ -2,39 +2,26 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ControllerFeedback;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\Admin\FeedbackController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
+Route::middleware(['auth', 'admin'])->group(function () {
+    
+    Route::get('/admin', [FeedbackController::class, 'index']);
+
 });
 
-Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin');
-    })->name('dashboard');
-});
+Route::middleware(['auth', 'user'])->group(function () {
 
+    Route::get('/home', [HomeController::class, 'index'])->name('user.home');
+    Route::get('/feeds', [HomeController::class, 'feeds'])->name('user.feeds');
+    Route::post('/home', [FeedbackController::class, 'store']);
+
+});
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\User\HomeController::class, 'index']);
-Route::post('/home', [App\Http\Controllers\ControllerFeedback::class, 'store']);
-Route::get('/admin', [App\Http\Controllers\Admin\FeedbackController::class, 'index']);
-Route::get('/success', [App\Http\Controllers\User\HomeController::class, 'success']);
-
-

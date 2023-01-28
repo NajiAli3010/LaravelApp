@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Feedbackform;
+
 class HomeController
 {
     public function index()
     {
-        if (auth()->user()->admin) {
-            abort(403);
-
-        }else {
-            return view('user.home.index');
-        }
+        return view('user.home.index');
     }
 
-    public function success()
+    public function feeds()
     {
-        return view('user.home.success');
+        $feeds = Feedbackform::where('user_id',auth()->user()->id)->paginate(10);
+        return view('user.feeds.index',compact('feeds'));
     }
-
 }
