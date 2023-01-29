@@ -28,11 +28,10 @@ class FeedbackController
 
         $feedbacks = Feedbackform::where('user_id',auth()->user()->id)->whereDate('created_at', Carbon::today())->get();
         $feedback_count = $feedbacks->count();
-        // return $feedback_count;
 
         if($feedback_count > 0){
 
-            // return "Feedback already submitted today, please try tomorrow.";
+        
 
             $message = "Feedback already submitted today, please try tomorrow.";
             $alert_class = "alert-danger";
@@ -55,21 +54,24 @@ class FeedbackController
             $feedback->Subject = $request['subject'];
             $feedback->Feedback = $request['feedback'];
 
-            // if ($request->hasfile('file')) {
-            //     $imageName = time() . '.' . $request->file->extension();
-            //     $request->file->move(public_path('docs'), $imageName);
-            // }
-
+        
             $fileName = time() . '.' . $request['file']->extension();
             $feedback->File = $fileName;
+            
+            
+
+            if($request->hasfile('file')){
+                $file = $request->file('file');
+                $ext = $file->getClientOriginalExtension();
+                $filename = time().".".$ext;
+                $file->move('docs/',$filename);
+            }
+
             $feedback->user_id = auth()->user()->id;
             $feedback->save();
 
             $feedback_data = $request->all();
-            // return $feedback_data;
-
-            // Send Email to Manager
-
+            
             $request_from = auth()->user()->name;
             $to = 'xosig20235@brandoza.com';
             $title = 'New Feedback Submission';
@@ -86,10 +88,7 @@ class FeedbackController
 
         }
 
-        // cope="col">Subject</th>
-        //     <th scope="col">Feedback</th>
-        //     <th scope="col">File</th>
-        //     <th scope="col">Create Time</th>
+      
         return redirect()->back()->with('message',$message)->with('alert-class',$alert_class);
     }
 
