@@ -15,7 +15,7 @@ class FeedbackController
     public function index()
     {
         if (auth()->user()->admin){
-            $feeds = Feedbackform::orderBy('id','ASC')->paginate(10);
+            $feeds = Feedbackform::orderBy('created_at','DESC')->paginate(10);
             return view('admin.feeds.index', compact('feeds'));
         }else{
             abort(403);
@@ -63,7 +63,7 @@ class FeedbackController
             $fileName = time() . '.' . $request['file']->extension();
             $feedback->File = $fileName;
             $feedback->user_id = auth()->user()->id;
-            // $feedback->save();
+            $feedback->save();
 
             $feedback_data = $request->all();
             // return $feedback_data;
