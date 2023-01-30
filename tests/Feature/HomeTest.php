@@ -6,7 +6,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class UserTest extends TestCase
+use App\Models\User;
+
+class HomeTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -15,10 +17,11 @@ class UserTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
-        // $response = $this->get('/welcome');
+        $user = User::factory()->create(['admin' => 0]);
+        $this->actingAs($user);
+
+        $response = $this->get('/home');
 
         $response->assertStatus(200);
     }
-
 }

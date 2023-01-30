@@ -14,7 +14,6 @@
             <h1 class="align-items-lg-center">Create Feedback </h1>
 
             <div class="card">
-                {{--                 <div class="card-header">{{ __('Dashboard') }}</div>--}}
 
             <div class="container ">
 
@@ -28,21 +27,20 @@
                     </ul>
                 </div>
                 @endif
-
-                
+               
 
                 <form action="/home" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 ">
                         <label for="exampleFormControlInput1" class="form-label">Subject</label>
                         <input type="text" name="subject" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Your name">
+                            placeholder="Your name" value="{{ old('subject') }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Feedback</label>
-                        <textarea class="form-control" name="feedback" id="exampleFormControlTextarea1"
-                            rows="3"></textarea>
+                        <input class="form-control" name="feedback" id="exampleFormControlTextarea1"
+                            rows="3" value="{{ old('feedback') }}">
                     </div>
 
                     <div class="mb-3">

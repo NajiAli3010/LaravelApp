@@ -5,8 +5,9 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
 
-class UserTest extends TestCase
+class FeedTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -15,10 +16,11 @@ class UserTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
-        // $response = $this->get('/welcome');
+        $user = User::factory()->create(['admin' => 0]);
+        $this->actingAs($user);
+
+        $response = $this->get('/feeds');
 
         $response->assertStatus(200);
     }
-
 }

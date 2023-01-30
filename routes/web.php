@@ -12,9 +12,11 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     
-    Route::get('/admin', [FeedbackController::class, 'index']);
+    Route::get('/admin', [FeedbackController::class, 'index'])->middleware('admin');
 
 });
+
+
 
 Route::middleware(['auth', 'user'])->group(function () {
 

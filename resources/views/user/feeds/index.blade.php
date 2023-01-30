@@ -48,6 +48,16 @@
                                 <ul class="list-inline">
                                     <li>
                                         <div class="info">
+                                            <p>Client Registration Date:</p>
+                                            <strong>{{ $feed->user->created_at }}</strong>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="author-info author-info-2">
+                                <ul class="list-inline">
+                                    <li>
+                                        <div class="info">
                                             <p>Posted on:</p>
                                             <strong>{{ $feed->created_at }}</strong>
                                         </div>

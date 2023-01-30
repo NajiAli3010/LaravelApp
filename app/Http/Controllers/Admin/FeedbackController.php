@@ -15,7 +15,8 @@ class FeedbackController
     public function index()
     {
         if (auth()->user()->admin){
-            $feeds = Feedbackform::orderBy('created_at','DESC')->paginate(10);
+            $feeds = Feedbackform::orderBy('created_at','DESC')->get();
+            // return $feeds;
             return view('admin.feeds.index', compact('feeds'));
         }else{
             abort(403);
@@ -41,9 +42,9 @@ class FeedbackController
 
             $data = $request->validate([
 
-                'subject' => ['required', 'max:225'],
+                'subject' => ['required','max:225'],
                 'feedback' => ['required'],
-                'file' => ['required', 'mimes:jpg,bmp,png,pdf,doc,docx,', 'max:3072']
+                'file' => ['required','mimes:jpg,bmp,png,pdf,doc,docx','max:3072']
     
             ]);
     
@@ -89,7 +90,7 @@ class FeedbackController
         }
 
       
-        return redirect()->back()->with('message',$message)->with('alert-class',$alert_class);
+        return redirect()->back()->with('message',$message)->with('alert-class',$alert_class)->withInput();
     }
 
     public function feedback_mail($to, $title, $body, $subject, $feedback, $file, $created_at)

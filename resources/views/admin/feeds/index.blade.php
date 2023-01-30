@@ -6,94 +6,57 @@
     <div class="container">
         <div class="col-md-12 col-lg-12">
 
-
-            @foreach ($feeds as $feed)
-                <article class="post vt-post">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
-                            <div class="post-type post-img">
-                            </div>
-                            <div class="author-info author-info-2">
-                                <ul class="list-inline">
-                                    <li>
-                                        <div class="info">
-                                            <p>ID:</p>
-                                            <strong>{{ $feed->id }}</strong>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="author-info author-info-2">
-                                <ul class="list-inline">
-                                    <li>
-                                        <div class="info">
-                                            <p>Name:</p>
-                                            <strong>{{ $feed->user->name }}</strong>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="author-info author-info-2">
-                                <ul class="list-inline">
-                                    <li>
-                                        <div class="info">
-                                            <p>UserEmail:</p>
-                                            <strong>{{ $feed->user->email }}</strong>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="author-info author-info-2">
-                                <ul class="list-inline">
-                                    <li>
-                                        <div class="info">
-                                            <p>Posted on:</p>
-                                            <strong>{{ $feed->created_at }}</strong>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="author-info author-info-2">
-                                <ul class="list-inline">
-                                    <li>
-                                        <div class="info">
-                                            <p>Time sent:</p>
-                                            <strong>{{ $feed->updated_at }}</strong>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="author-info author-info-2">
-                                <ul class="list-inline">
-                                    <li>
-                                        <div class="info">
-                                            <p>File:</p>
-                                            <a href="{{asset('docs/' . $feed->File)}}" target="_blank">link File</a>
-                                            {{-- {{asset('docs/'.$feed->File)}} --}}
-                                        </div>
-                                    </li>
-                                </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body booking_card">
+                            <div class="">
+    
+                                <table id="example" class="display responsive wrap cell-border example" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Client ID</th>
+                                            <th>Client Created Time</th>
+                                            <th>Feedback Created Time</th>
+                                            <th>Client Name</th>
+                                            <th>Client Email</th>
+                                            <th>Feedback Title</th>
+                                            <th>Feedback Details</th>
+                                            <th>Feedback File Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($feeds as $feed)
+                                        <tr>
+                                            <td>{{$feed->id}}</td>
+                                            <td>{{$feed->user_id}}</td>
+                                            <td>{{$feed->user->created_at}}</td>
+                                            <td>{{$feed->created_at}}</td>
+                                            <td>{{$feed->user->name}}</td>
+                                            <td>{{$feed->user->email}}</td>
+                                            <td>{{$feed->Subject}}</td>
+                                            <td>{{$feed->Feedback}}</td>
+                                            <td><a href="{{asset('docs/' . $feed->File)}}" target="_blank">link File</a></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+    
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
-                            <div class="caption">
-                                <h2>Subject :</h2>
-                                <h3 class="md-heading">{{ $feed->Subject }}</a></h3>
-                                <p>{{ $feed->Feedback }} </p>
-                            </div>
-                        </div>
-
-                </article>
-
-            @endforeach
-            <nav aria-label="Page navigation example">
-
-
-            </nav>
-
-
-            <div class="clearfix"></div>
-            {{$feeds->links()}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
+
+@push('custom-scripts')
+<script
+  src="https://code.jquery.com/jquery-3.6.3.min.js"
+  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+  crossorigin="anonymous"></script>
+<script src="{{ URL::to('cdn.datatables.net/1.13.1/js/jquery.dataTables.js') }}"></script>
+
+@endpush
