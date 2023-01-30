@@ -8,29 +8,26 @@
     <br>
     <p>{{ $mailData['body'] }}</p>
     <br>
-    
-
-    {{-- 'title' => $title,
-            'body' => $body,
-            'subject' => $subject,
-            'feedback' => $feedback,
-            'file' => $file,
-            'created_at' => $created_at, --}}
-            
+   
     <table class="table">
         <thead>
-          <tr>
-            <th scope="col">Subject</th>
-            <th scope="col">Feedback</th>
-            <th scope="col">File</th>
-            <th scope="col">Create Time</th>
-          </tr>
+         
         </thead>
         <tbody>
           <tr>
+            <td>Subject: </td>
             <td>{{$mailData['subject']}}</td>
+          </tr>
+          <tr>
+            <td>Feedback: </td>
             <td>{{$mailData['feedback']}}</td>
+          </tr>
+          <tr>
+            <td>File: </td>
             <td>{{$mailData['file']}}</td>
+          </tr>
+          <tr>
+            <td>Created At: </td>
             <td>{{$mailData['created_at']}}</td>
           </tr>
         </tbody>
